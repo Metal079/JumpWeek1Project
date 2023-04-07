@@ -1,6 +1,11 @@
 import random
 
 def guessing_game():
+    with open('log.txt', 'a') as f:
+        f.write("------------------------\n")
+        f.write("GuessingGame\n")
+        f.write("------------------------\n")
+
     print("Welcome to the Number Guessing Game!")
     print("I'm thinking of a number between 1 and 100.")
     print("You have 5 tries to guess the number.")
@@ -19,6 +24,8 @@ def guessing_game():
 
         if player_guess == secret_number:
             print("You guessed it! You win!")
+            with open("log.txt", "a") as f:
+                f.write("You guessed it! You win!")
             break
         elif abs(player_guess  - secret_number) <= 3:
             print("Hot! So close!")
@@ -26,7 +33,13 @@ def guessing_game():
             print("Warm! Getting there!")
         else:
             print("Cold! Way off!")
-    
+
+    if player_attempts == 5:
+        print(f"You ran out of guesses! You lose! Correct answer was {secret_number}\n")
+        with open("log.txt", "a") as f:
+            f.write(
+                f"You ran out of guesses! You lose! Correct answer was {secret_number}\n")
+
     with open("log.txt", "a") as f:
-        f.write(f"Player guessed {player_guesses}")
+        f.write(f"Player guessed {player_guesses}\n")
         

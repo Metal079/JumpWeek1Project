@@ -2,6 +2,11 @@ import random
 
 
 def rps():
+    with open('log.txt', 'a') as f:
+        f.write("------------------------\n")
+        f.write("RPS\n")
+        f.write("------------------------\n")
+
     print("Welcome to Rock, Paper, Scissors!")
     mode = input(
         "Do you want to play against the computer or another player? (C or P): ")
